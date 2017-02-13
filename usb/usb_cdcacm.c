@@ -395,8 +395,8 @@ void usb_cdcacm_disable(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin){
      * spec, section 7.1.7.3). */
 	NVIC_InitTypeDef	NVIC_InitStructure;
 	NVIC_InitStructure.NVIC_IRQChannel = USB_LP_CAN1_RX0_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 15;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 15;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = DISABLE;
 	NVIC_Init(&NVIC_InitStructure);
 	
@@ -655,10 +655,10 @@ static void usbInit(void) {
     USB_BASE->ISTR = 0;
     USBLIB->irq_mask = USB_ISR_MSK;
     USB_BASE->CNTR = USBLIB->irq_mask;
-
+     
 	NVIC_InitStructure.NVIC_IRQChannel = USB_LP_CAN1_RX0_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 15;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 15;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 

@@ -22,8 +22,7 @@
 */
 
 /*----------Macro definition--------------------------------------------------*/  
-#define WEAK __attribute__ ((weak))           
-
+#define WEAK __attribute__ ((weak))
 
 /*----------Declaration of the default fault handlers-------------------------*/  
 /* System exception vector handler */
@@ -104,7 +103,6 @@ extern void SystemInit(void);    /*!< Setup the microcontroller system(CMSIS) */
 void Default_Reset_Handler(void);   /*!< Default reset handler                */
 static void Default_Handler(void);  /*!< Default exception handler            */
 static void call_constructors(unsigned long *start, unsigned long *end) __attribute((noinline));
-
 
 /**
   *@brief The minimal vector table for a Cortex M3.  Note that the proper constructs
