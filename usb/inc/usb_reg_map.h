@@ -27,6 +27,7 @@
 #ifndef _USB_REG_MAP_H_
 #define _USB_REG_MAP_H_
 
+#include <usb.h>
 #include <usb_type.h>
 #include <stm32f10x.h>
 

@@ -489,7 +489,7 @@ uint32_t usb_cdcacm_peek(uint8_t* buf, uint32_t len)
         len = rx_unread;
     }
 
-    for (i = 0; i < len; i++) {
+    for (i = 0; i < (int)len; i++) {
         buf[i] = vcomBufferRx[tail];
         tail = (tail + 1) & CDC_SERIAL_RX_BUFFER_SIZE_MASK;
     }
@@ -507,7 +507,7 @@ uint32_t usb_cdcacm_peek_ex(uint8_t* buf, uint32_t offset, uint32_t len)
         len = rx_unread - offset;
     }
 
-    for (i = 0; i < len; i++) {
+    for (i = 0; i < (int)len; i++) {
         buf[i] = vcomBufferRx[tail];
         tail = (tail + 1) & CDC_SERIAL_RX_BUFFER_SIZE_MASK;
     }
@@ -578,7 +578,7 @@ static void vcomDataTxCb(void)
     uint16_t tmp = 0;
 	uint16_t val;
 	int i;
-	for (i = 0; i < tx_unsent; i++) {
+	for (i = 0; i < (int)tx_unsent; i++) {
 		val = vcomBufferTx[tail];
 		tail = (tail + 1) & CDC_SERIAL_TX_BUFFER_SIZE_MASK;
 		if (i&1) {
