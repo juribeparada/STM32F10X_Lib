@@ -70,7 +70,7 @@ uint32_t USBSerial::write(const uint8_t *buf, uint32_t len)
 uint32_t n = 0;
    // Roger Clark. 
    // Remove checking of isConnected for ZUMspot
-   if (!buf) {
+   if (!buf || !usb_is_connected(USBLIB) || !usb_is_configured(USBLIB)) {
         return 0;
     }
 
